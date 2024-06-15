@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .container{
+            width:100%;
+            height:100vh;
+            color:white;
+            background-color: rgb(64, 70, 197);
+            background: linear-gradient(90deg, rgb(43, 41, 65) ,rgb(77, 118, 159));
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .watch{
+            gap:5px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            border:5px solid white;
+            padding:10px;
+            font-size: 35px;
+
+        }
+    </style>
+   
+</head>
+<body>
+    <div class="container">
+    <div class="watch">
+        <span id="hr">11</span>
+        <span >:</span>
+        <span id="min">11</span>
+        <span>:</span>
+        <span id="sec">11</span>
+        <span id="am">  am</span>
+    </div>
+</div>
+<script>
+    
+    function display(){
+        let date=new Date();
+      let hour=date.getHours();
+      let min=date.getMinutes();
+      let secr=date.getSeconds();
+      if(hour>12)
+        document.getElementById('am').innerHTML="pm";
+      else
+      document.getElementById('am').innerHTML="am";
+      if(hour>12)
+      {
+        hour=hour-12;
+      }
+     
+      document.getElementById('hr').innerHTML=padZero(hour);
+      document.getElementById('min').innerHTML=padZero(min);
+      document.getElementById('sec').innerHTML=padZero(secr);
+     function padZero(num){
+       return num<10?"0"+num:num; 
+     }
+      console.log(hour);
+    }
+    setInterval(display,200);
+</script>
+</body>
+</html>
